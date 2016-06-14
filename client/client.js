@@ -9,13 +9,14 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
   $locationProvider.html5Mode(true);
 }]);
 app.controller('BudgetController', function(){
-  var budget = 0;
-  var budgetInput = 0;
+  var bc = this;
+  bc.budget = 0;
+  bc.budgetInput = 0;
   console.log('Testing Controller');
 
-  var setBudget = function(budgetInput){
-    budget = budget + budgetInput;
-    console.log(budget);
-    return budget;
+  bc.setBudget = function(budgetInput){
+    bc.budget = bc.budget + bc.budgetInput;
+    console.log('bc.budget', bc.budget);
+    return bc.budget;
   }
 })
