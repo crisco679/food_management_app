@@ -8,7 +8,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
   })
   $locationProvider.html5Mode(true);
 }]);
-app.controller('BudgetController', function(){
+app.controller('BudgetController', ['$http', function($http){
   var bc = this;
   bc.budget = 0;
   bc.budgetInput = 0;
@@ -19,4 +19,4 @@ app.controller('BudgetController', function(){
     console.log('bc.budget', bc.budget);
     return bc.budget;
   }
-})
+}])
