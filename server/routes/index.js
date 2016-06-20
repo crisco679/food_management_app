@@ -1,9 +1,9 @@
 var router = require('express').Router();
 var connection = require('../db/connection');
 var connectionString = connection.connectionString;
+var pg = require('pg');
 
-
-router.post('/', function(req, res){
+router.post('/budget', function(req, res){
   console.log('router.post');
   pg.connect(connectionString, function(err, client, done){
     if(err){
@@ -27,7 +27,7 @@ router.post('/', function(req, res){
       });
     }
   });
-  router.get('/', function(req, res){
+  router.get('/budget', function(req, res){
     pg.connect(connectionString, function(err, client, done){
     if (err) {
       console.log(err);
