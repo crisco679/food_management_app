@@ -1,3 +1,6 @@
+html{
+  background-image: url('background.jpg');
+}
 .helloWorld{
   color: blue;
 }
