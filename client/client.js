@@ -21,13 +21,12 @@ app.controller('BudgetController', ['$http', function($http){
       if(response.status !== 200){
         console.log('error in fetchBudget');
       } else {
-        bc.budget = 0;
         return response.data;
       }
     })
   }
   bc.setBudget = function(budgetInput){
-    bc.budget = bc.budget + bc.budgetInput;
+    bc.budget = bc.budgetInput;
     $http.post('/budget',
     {budget: bc.budget}
   ).then(fetchBudget);

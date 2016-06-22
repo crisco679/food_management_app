@@ -33,7 +33,7 @@ router.post('/budget', function(req, res){
       console.log(err);
       res.sendStatus(500);
     }else {
-      var query = client.query('SELECT * FROM budget');
+      var query = client.query('SELECT budget_id FROM budget');
       var results = [];
 
       query.on('error', function(error){
