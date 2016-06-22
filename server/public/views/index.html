@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./views/styles.css"/>
   </head>
   <body ng-controller="BudgetController as budget">
-    <h1>Budget:{{budget.budget}}</h1>
+    <h1>Budget:<p>{{budget.budgets[0].budget | currency}}</p></h1>
     <input type="number" ng-model="budget.budgetInput"/>
     <input type="button" value="Enter" ng-click="budget.setBudget(budgetInput)"/>
   </body>

@@ -12,6 +12,7 @@ app.controller('BudgetController', ['$http', function($http){
   var bc = this;
   bc.budget = 0;
   bc.budgetInput = 0;
+  bc.budgets = [];
   console.log('Testing Controller');
 
   var fetchBudget = function(){
@@ -21,7 +22,10 @@ app.controller('BudgetController', ['$http', function($http){
       if(response.status !== 200){
         console.log('error in fetchBudget');
       } else {
-        return response.data;
+        console.log('Inside get request');
+        bc.budgets = response.data;
+        console.log(bc.budgets);
+        return bc.budgets;
       }
     })
   }
@@ -32,4 +36,5 @@ app.controller('BudgetController', ['$http', function($http){
   ).then(fetchBudget);
     console.log('bc.budget', bc.budget);
   }
+  fetchBudget();
 }])
