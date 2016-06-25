@@ -22,7 +22,6 @@ app.controller('BudgetController', ['$http', function($http){
       if(response.status !== 200){
         console.log('error in fetchBudget');
       } else {
-        console.log('Inside get request');
         bc.budgets = response.data;
         console.log(bc.budgets);
         return bc.budgets;
@@ -35,6 +34,9 @@ app.controller('BudgetController', ['$http', function($http){
     {budget: bc.budget}
   ).then(fetchBudget);
     console.log('bc.budget', bc.budget);
+  }
+  bc.deleteBudget = function(){
+    $http.delete('/budget/' + id).then(fetchBudget);
   }
   fetchBudget();
 }])
