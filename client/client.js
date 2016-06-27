@@ -24,7 +24,7 @@ app.controller('BudgetController', ['$http', function($http){
       } else {
         bc.budgets = response.data;
         console.log(bc.budgets);
-        return bc.budgets;
+        return response.data;
       }
     })
   }
@@ -35,7 +35,9 @@ app.controller('BudgetController', ['$http', function($http){
   ).then(fetchBudget);
     console.log('bc.budget', bc.budget);
   }
-  bc.deleteBudget = function(){
+  bc.deleteBudget = function(id){
+    console.log('deleteBudget is being called');
+    console.log('param of deleteBudget', id);
     $http.delete('/budget/' + id).then(fetchBudget);
   }
   fetchBudget();
