@@ -11,7 +11,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 app.controller('BudgetController', ['$http', function($http){
   var bc = this;
   bc.budget = 0;
-  bc.budgetInput = 0;
+  bc.budgetInput = '';
   bc.budgets = [];
   console.log('Testing Controller');
 
@@ -33,6 +33,7 @@ app.controller('BudgetController', ['$http', function($http){
     $http.post('/budget',
     {budget: bc.budget}
   ).then(fetchBudget);
+    bc.budgetInput = '';
     console.log('bc.budget', bc.budget);
   }
   bc.deleteBudget = function(id){
