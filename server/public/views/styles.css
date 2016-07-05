@@ -4,6 +4,9 @@ html{
 .budgetHolder{
   text-align: center;
 }
+.budgetText{
+  color: yellowgreen;
+}
 .helloWorld{
   color: blue;
 }
