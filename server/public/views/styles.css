@@ -1,6 +1,9 @@
 html{
   background-image: url('background.jpg');
 }
+.budgetHolder{
+  text-align: center;
+}
 .helloWorld{
   color: blue;
 }
