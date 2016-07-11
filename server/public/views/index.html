@@ -6,9 +6,20 @@
     <script src="./vendor/angular/angular.min.js"></script>
     <script src="./vendor/angular-route/angular-route.min.js"></script>
     <script src="./assets/scripts/client.min.js"></script>
+    <link rel="stylesheet" href="./views/normalize.css"/>
     <link rel="stylesheet" href="./views/styles.css"/>
   </head>
   <body ng-controller="BudgetController as budget">
+    <header>
+      <h1>Track your Budget</h1>
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Home</a></li>
+        </ul>
+      </nav>
+    </header>
    <div class = "budgetHolder">
      <div class="budgetText">
       <h1>Budget:<div ng-repeat="budget in budget.budgets">{{budget.budget | currency}}</div></h1>
@@ -17,5 +28,6 @@
       <input type="button" value="Enter" ng-click="budget.setBudget(budgetInput)" ng-show="true"/>
       <input type="button" value="Delete" ng-click="budget.deleteBudget(budget.budgets[0].budget_id)"/>
    </div>
+   <footer></footer>
   </body>
 </html>
