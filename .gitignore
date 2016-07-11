@@ -6,3 +6,4 @@ node_modules
 
 # File System
 .DS_Store
+client.min.js
