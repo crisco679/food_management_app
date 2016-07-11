@@ -11,6 +11,11 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
     controller: 'AboutController',
     controllerAs: 'about'
   })
+  .when('/subtract', {
+    templateUrl: 'views/subtractBudget.html',
+    controller: 'SubtractController',
+    controllerAs: 'subtract'
+  })
   $locationProvider.html5Mode(true);
 }]);
 app.controller('BudgetController', ['$http', function($http){
@@ -51,4 +56,8 @@ app.controller('BudgetController', ['$http', function($http){
 app.controller('AboutController', ['$http', function($http){
   var ab = this;
   console.log('AboutController');
+}]);
+app.controller('SubtractController', ['$http', function($http){
+  var sb = this;
+  console.log('SubtractController');
 }]);

@@ -3,6 +3,15 @@ var connection = require('../db/connection');
 var connectionString = connection.connectionString;
 var pg = require('pg');
 
+//*************
+//Syntax to update table
+//*************
+
+// UPDATE budget
+// SET budget = 500
+// WHERE budget_id = 10;
+
+//*************
 router.post('/budget', function(req, res){
   console.log('router.post');
   pg.connect(connectionString, function(err, client, done){

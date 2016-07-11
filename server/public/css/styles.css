@@ -4,6 +4,11 @@ GENERAL
 body{
   background-image: url('background.jpg');
 }
+#wrapper{
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 0 5%;
+}
 .budgetHolder{
   text-align: center;
 }
@@ -16,6 +21,14 @@ body{
 p{
   color: #fff;
 }
+/******************
+SUBTRACT PAGE
+******************/
+.subtractInputs{
+  display: block;
+  margin: 5px auto;
+}
+
 /******************
 HEADER
 ******************/
