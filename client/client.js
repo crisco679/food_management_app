@@ -2,9 +2,14 @@ var app = angular.module('foodManagementApp', ['ngRoute']);
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
   $routeProvider
   .when('/', {
-    templateUrl: '/',
+    templateUrl: 'views/budget.html',
     controller: 'BudgetController',
     controllerAs: 'budget'
+  })
+  .when('/about', {
+    templateUrl: 'views/about.html',
+    controller: 'AboutController',
+    controllerAs: 'about'
   })
   $locationProvider.html5Mode(true);
 }]);
@@ -43,3 +48,7 @@ app.controller('BudgetController', ['$http', function($http){
   }
   fetchBudget();
 }])
+app.controller('AboutController', ['$http', function($http){
+  var ab = this;
+  console.log('AboutController');
+}]);
