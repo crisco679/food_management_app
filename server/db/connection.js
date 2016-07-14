@@ -10,9 +10,8 @@ function initializeExpense() {
       var createExpense = client.query('CREATE TABLE IF NOT EXISTS "expense" (' +
       'expense_id serial PRIMARY KEY,' +
       'name varchar(80) NOT NULL,' +
-      'price varchar(10) NOT NULL,' +
-      'category varchar(50),' +
-      'description text);');
+      'price varchar(10) NOT NULL);') 
+
 
       createExpense.on('end', function() {
         console.log('Successfully ensured Expense schema exists.');
