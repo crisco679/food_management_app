@@ -1,10 +1,16 @@
-<div class = "budgetHolder">
-  <div class="budgetText">
-   <h1>Budget:<div ng-repeat="budget in budget.budgets">{{budget.budget | currency}}</div></h1>
- </div>
- <div>
-   <p>Food</p><input class="subtractInputs"></input>
-   <p>Price</p><input class="subtractInputs"></input>
-   <input type="button" value="Enter"></input>
- </div>
+<div class="foodPurchases budgetHolder">
+  <section>
+    <h4>FOOD BUDGET FOR {{ subtract.info.month }} {{ subtract.info.year }}</h4>
+    <h5>Initial Budget: {{ subtract.info.budget | currency }}</h5>
+    <h5>Remaining: {{ subtract.info.remaining | currency }}</h5>
+  </section>
+  <section>
+    <input type="text" ng-model="subtract.purchase.name" placeholder="Enter food name"/>
+    <input type="number" ng-model="subtract.purchase.price" placeholder="Enter food price"/>
+    <input class="btn btn-sm btn-primary" type="button" value="Add" ng-click="subtract.purchased()" />
+  </section>
+  <section>
+    <h4>PURCHASES</h4>
+    <p ng-repeat="fp in subtract.purchases">{{ fp.name }} || {{ fp.price | currency }}</p>
+  </section>
 </div>

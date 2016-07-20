@@ -3,22 +3,24 @@
   <head>
     <meta charset="utf-8">
     <title>Food Management App</title>
+
     <script src="./vendor/angular/angular.min.js"></script>
     <script src="./vendor/angular-route/angular-route.min.js"></script>
     <script src="./assets/scripts/client.min.js"></script>
     <link rel="stylesheet" href="./css/normalize.css"/>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:700italic,400italic,400,700,800|Changa+One:400,400italic" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="./vendor/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="./css/styles.css"/>
     <base href="/" />
   </head>
   <body ng-controller="BudgetController as budget">
     <header>
-      <h1>Track your Budget</h1>
-      <nav>
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/about">About</a></li>
-          <li><a href="/subtract">I bought some food</a></li>
+      <h1 class="text-center">Track your Food Budget</h1>
+      <nav class="main-nav">
+        <ul class="header-nav">
+          <li class="nav-link"><a href="/">Home</a></li>
+          <li class="nav-link"><a href="/about">About</a></li>
+          <li class="nav-link"><a href="/subtract">I bought some food</a></li>
         </ul>
       </nav>
     </header>

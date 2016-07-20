@@ -10,7 +10,12 @@ body{
   padding: 0 5%;
 }
 .budgetHolder{
-  text-align: center;
+  background-color: rgba(30, 30, 30, .9);
+  color: white;
+  padding: 10px;
+  margin: 10px 0px;
+  border-radius: 10px;
+  /*text-align: center;*/
 }
 .budgetText{
   color: #fff;
@@ -46,7 +51,20 @@ header{
 /******************
 NAV
 ******************/
-a{
+.main-nav {
+  text-align: center;
+}
+.header-nav {
+  padding: 0px;
+  display: inline-block;
+}
+
+.nav-link {
+  display: inline;
+  padding-right: 7px;
+}
+
+a {
   text-decoration: none;
 }
 /******************
@@ -54,4 +72,19 @@ ABOUT PAGE
 ******************/
 #aboutParagraph{
   text-align: center;
+}
+
+/******************
+BUDGET
+******************/
+.budget-title {
+  display: inline-block;
+}
+
+.enterBudget {
+  padding: 20px 0px 0px;
+}
+
+input {
+  color: black;
 }

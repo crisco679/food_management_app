@@ -1,4 +1,5 @@
 var app = angular.module('foodManagementApp', ['ngRoute']);
+
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
   $routeProvider
   .when('/', {
@@ -11,53 +12,102 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
     controller: 'AboutController',
     controllerAs: 'about'
   })
-  .when('/subtract', {
+  .when('/purchases/:id', {
     templateUrl: 'views/subtractBudget.html',
     controller: 'SubtractController',
     controllerAs: 'subtract'
   })
+  .otherwise({
+    redirectTo: '/'
+  });
+
   $locationProvider.html5Mode(true);
 }]);
-app.controller('BudgetController', ['$http', function($http){
+
+app.controller('BudgetController', ['$http', '$location', '$routeParams', function($http, $location, $routeParams){
   var bc = this;
-  bc.budget = 0;
-  bc.budgetInput = '';
+  bc.budgetInput = {};
   bc.budgets = [];
-  console.log('Testing Controller');
+  bc.foodInfo = {};
+  bc.years = [];
+  /*  arrays for months/years for ng-options.
+  *   ranges can easily be updated
+  */
+  bc.months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+  for (var i = 2016; i < 2020; i++) {
+    bc.years.push(i);
+  }
+
+  // console.log('Testing Controller');
 
   var fetchBudget = function(){
-    console.log('fetchBudget being called');
+    // console.log('fetchBudget being called');
     $http.get('/budget').then(function(response){
-      console.log('this is response from /budget', response);
+      // console.log('this is response from /budget', response);
       if(response.status !== 200){
         console.log('error in fetchBudget');
       } else {
         bc.budgets = response.data;
-        console.log(bc.budgets);
+        // console.log(bc.budgets);
         return response.data;
       }
-    })
-  }
-  bc.setBudget = function(budgetInput){
-    bc.budget = bc.budgetInput;
-    $http.post('/budget',
-    {budget: bc.budget}
-  ).then(fetchBudget);
-    bc.budgetInput = '';
-    console.log('bc.budget', bc.budget);
-  }
-  bc.deleteBudget = function(id){
-    console.log('deleteBudget is being called');
-    console.log('param of deleteBudget', id);
-    $http.delete('/budget/' + id).then(fetchBudget);
-  }
+    });
+  };
+
+  bc.setBudget = function(){
+    $http.post('/budget', bc.budgetInput).then(function(response) {
+      fetchBudget();
+    });
+  };
+
+  bc.deleteBudget = function(info){
+    var id = info.budget_id;
+    $http.delete('/budget/' + id).then(function(response) {
+      fetchBudget();
+    });
+  };
+
+  bc.addPurchases = function(info) {
+    // $location.path('/purchases').search({params: info.budget_id});
+    $location.path('/purchases/'+info.budget_id);
+  };
+
+  /* Keep at bottom to load any data from DB upon page load*/
   fetchBudget();
-}])
+}]);
+
 app.controller('AboutController', ['$http', function($http){
   var ab = this;
   console.log('AboutController');
 }]);
-app.controller('SubtractController', ['$http', function($http){
+
+app.controller('SubtractController', ['$http', '$routeParams', function($http, $routeParams){
   var sb = this;
-  console.log('SubtractController');
+  sb.info = [];
+  sb.purchases = [];
+  sb.purchase = {};
+
+  var fetchMonthly = function(){
+    $http.get('/purchases/' + $routeParams.id).then(function(response){
+      console.log(response.data);
+      sb.info = response.data.info[0];
+      sb.purchases = response.data.purchases;
+      return response.data;
+    });
+  };
+
+  sb.purchased = function() {
+    console.log(sb.purchase);
+    $http.post('/purchases/' + $routeParams.id, sb.purchase).then(function(response) {
+      console.log(response.data);
+      fetchMonthly();
+    });
+  };
+
+  fetchMonthly();
 }]);
+
+app.factory("user",function(){
+  return {};
+});

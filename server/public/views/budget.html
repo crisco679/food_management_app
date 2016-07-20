@@ -1,8 +1,15 @@
 <div class = "budgetHolder">
-  <div class="budgetText">
-   <h1>Budget:<div ng-repeat="budget in budget.budgets">{{budget.budget | currency}}</div></h1>
- </div>
-   <input type="number" ng-model="budget.budgetInput"/>
-   <input type="button" value="Enter" ng-click="budget.setBudget(budgetInput)" ng-show="true"/>
-   <input type="button" value="Delete" ng-click="budget.deleteBudget(budget.budgets[0].budget_id)"/>
+  <div class="budgetText" ng-repeat="bt in budget.budgets">
+    <h5 class="budget-title">Budget for {{ bt.month }} {{ bt.year }}: </h5>
+    <span>{{bt.budget | currency}}</span>
+    <span>, Remaining: {{bt.remaining | currency }}</span>
+    <input class="btn btn-xs btn-primary" type="button" value="Add" ng-click="budget.addPurchases(bt)"/>
+    <input class="btn btn-xs btn-danger" type="button" value="Delete" ng-click="budget.deleteBudget(bt)" />
+  </div>
+  <div class="enterBudget">
+    <input type="number" ng-model="budget.budgetInput.budget" name="amount" placeholder="Enter budget amount"/>
+    <select ng-model="budget.budgetInput.month" ng-options="month for month in budget.months"></select>
+    <select ng-model="budget.budgetInput.year" ng-options="year for year in budget.years"></select>
+    <input class="btn btn-sm btn-success" type="button" value="Enter" ng-click="budget.setBudget()"/>
+  </div>
 </div>
