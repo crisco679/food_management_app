@@ -1,10 +1,14 @@
 <div class = "budgetHolder">
   <div class="budgetText" ng-repeat="bt in budget.budgets">
     <h5 class="budget-title">Budget for {{ bt.month }} {{ bt.year }}: </h5>
-    <span>{{bt.budget | currency}}</span>
-    <span>, Remaining: {{bt.remaining | currency }}</span>
-    <input class="btn btn-xs btn-primary" type="button" value="Add" ng-click="budget.addPurchases(bt)"/>
-    <input class="btn btn-xs btn-danger" type="button" value="Delete" ng-click="budget.deleteBudget(bt)" />
+    <input type="number" ng-model="budget.newBudget" ng-show="edit" placeholder="New {{ bt.month }} budget"/>
+    <span ng-hide="edit">{{bt.budget | currency}}</span>
+    <span ng-hide="edit">, Remaining: {{bt.remaining | currency }}</span>
+    <input class="btn btn-xs btn-primary" type="button" value="Add" ng-click="budget.addPurchases(bt)" ng-hide="edit"/>
+    <input class="btn btn-xs btn-info" type="button" value="Edit" ng-click="edit = true" ng-hide="edit"/>
+    <input class="btn btn-xs btn-info" type="button" value="Save" ng-show="edit"/>
+    <input class="btn btn-xs" type="button" value="Cancel" ng-click="edit = false" ng-show="edit" />
+    <input class="btn btn-xs btn-danger" type="button" value="Delete" ng-click="budget.deleteBudget(bt)" ng-hide="edit"/>
   </div>
   <div class="enterBudget">
     <input type="number" ng-model="budget.budgetInput.budget" name="amount" placeholder="Enter budget amount"/>

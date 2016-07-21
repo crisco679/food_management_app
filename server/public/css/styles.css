@@ -88,3 +88,11 @@ BUDGET
 input {
   color: black;
 }
+
+.food-info {
+  padding: 5px 0px;
+}
+
+.food-line {
+  display: inline;
+}

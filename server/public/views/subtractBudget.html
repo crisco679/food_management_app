@@ -11,6 +11,9 @@
   </section>
   <section>
     <h4>PURCHASES</h4>
-    <p ng-repeat="fp in subtract.purchases">{{ fp.name }} || {{ fp.price | currency }}</p>
+    <section class="food-info" ng-repeat="fp in subtract.purchases">
+      <p class="food-line">{{ fp.name }} || {{ fp.price | currency }}</p>
+      <input class="btn btn-xs btn-primary" type="button" value="Edit" />
+    </section>
   </section>
 </div>
